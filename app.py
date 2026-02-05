@@ -9,7 +9,11 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from datetime import datetime
 
 # 1. 시스템 상수 및 API 설정
-FIXED_API_KEY = "AIzaSyD_bLvKZgvOcKAX3nTc90evcW2iGblMOWE"
+MODEL_NAME = "gemini-3-flash-preview"
+
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+if not GEMINI_API_KEY:
+    raise RuntimeError("GEMINI_API_KEY 환경변수가 설정되지 않았습니다.")
 MODEL_NAME = "gemini-3-flash-preview"
 
 st.set_page_config(page_title="메디푸드 분석 시스템", layout="wide", page_icon="🔬")
@@ -157,4 +161,5 @@ if st.session_state.analysis_result:
             file_name=f"medifood_report_{datetime.now().strftime('%m%d')}.docx",
             mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
         )
+
     st.markdown(st.session_state.analysis_result)
