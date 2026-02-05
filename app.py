@@ -12,7 +12,7 @@ from datetime import datetime
 # 1. 시스템 상수 및 API 설정
 # ======================================================
 
-MODEL_NAME = "gemini-3-flash-preview"
+MODEL_NAME = "gemini-2.5-flash"
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 if not GEMINI_API_KEY:
@@ -260,3 +260,4 @@ if st.session_state.analysis_result:
         )
 
     st.markdown(st.session_state.analysis_result)
+
